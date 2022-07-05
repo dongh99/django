@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+  {% block content %}
+    <h1>Blog Project</h1>
+    <h4><a href="{% url 'blog:new' %}">New Post</a></h4>
+    <h4><a href="{% url 'blog:new_with_django_form' %}">New Post2</a></h4>
+
+      {% for blog in blogs%}
+      <div>
+        <h3>{{ blog.title }}</h3>
+        {{ blog.id }} <br />
+        {{ blog.writer }} <br />
+        {{ blog.summary }}
+        <a href="{% url 'blog:detail' blog.id %}">...more</a>
+      </div>
+      {% endfor %}
+  {% endblock %}
